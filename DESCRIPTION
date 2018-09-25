@@ -6,29 +6,30 @@ Description: Plot methods for various S4 objects ouput by functions in packages 
   the \href{https://bautheac.github.io/finRes/}{\pkg{finRes}} suite.
 Depends: R (>= 3.4.0)
 Imports:
-    BBGsymbols,
-    data.table (>= 1.11.4),
-    dplyr (>= 0.7.6),
-    dygraphs (>= 1.1.1.6),
-    factorem,
-    ggplot2 (>= 3.0.0),
-    ggthemes (>= 4.0.1),
-    magrittr,
-    methods (>= 3.4.0),
-    plotly (>= 4.8.0),
-    pullit,
-    purrr (>= 0.2.5),
-    rlang (>= 0.2.2),
-    scales (>= 1.0.0),
-    tibble (>= 1.4.2),
-    tidyr (>= 0.8.1),
-    xts (>= 0.11.0)
+  BBGsymbols,
+  data.table (>= 1.11.4),
+  dplyr (>= 0.7.6),
+  dygraphs (>= 1.1.1.6),
+  factorem,
+  ggplot2 (>= 3.0.0),
+  ggthemes (>= 4.0.1),
+  magrittr (>= 1.5),
+  methods (>= 3.4.0),
+  plotly (>= 4.8.0),
+  pullit,
+  purrr (>= 0.2.5),
+  rlang (>= 0.2.2),
+  scales (>= 1.0.0),
+  tibble (>= 1.4.2),
+  tidyr (>= 0.8.1),
+  xts (>= 0.11.0)
+Suggests: 
+  finRes
 Remotes: 
   bautheac/BBGsymbols,
   bautheac/factorem,
   bautheac/finRes,
   bautheac/pullit
-Suggests: finRes
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

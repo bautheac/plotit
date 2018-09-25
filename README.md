@@ -18,7 +18,7 @@ devtools::install_github(repo = "plotit", username = "bautheac")
 
 ## Example
 
-Market performance plot for an ETF with data retrieved from Bloomberg with [pullit](https://bautheac.github.io/pullit/):
+Market performance plot for an ETF where data is retrieved from Bloomberg with [pullit](https://bautheac.github.io/pullit/):
 
 ``` r
 library(finRes)

@@ -29,9 +29,11 @@ Plots a summary of a factor's positions by legs.
       "LNA Comdty", "LPA Comdty", "LTA Comdty", "LXA Comdty",
       "CLA Comdty", "COA Comdty", "DLA Comdty", "NGA Comdty", "HOA Comdty", "XBA Comdty"),
     start = as.character(Sys.Date() - (2L * 365L)), end = as.character(Sys.Date()),
-    TS_positions = 1L, roll_type = "A", roll_days = 0L, roll_months = 0L, roll_adjustment = "N")
+    TS_positions = 1L, roll_type = "A", roll_days = 0L, roll_months = 0L,
+    roll_adjustment = "N")
   factor <- momentum_factor(term_structure)
   plot_positions(factor)
 }
+
 
 }

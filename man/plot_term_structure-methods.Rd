@@ -14,13 +14,15 @@ plot_term_structure(object, ticker, frame)
 \arguments{
 \item{object}{an S4 object of class \linkS4class{FuturesTS}.}
 
-\item{ticker}{a scalar character vector. Active contract Bloomberg ticker to plot the term structure for.}
+\item{ticker}{a scalar character vector. Active contract Bloomberg ticker to plot the
+term structure for.}
 
 \item{frame}{a scalar integer vector. Animation speed parameter; the lower the faster.}
 }
 \description{
 Plots historical futures term structure data contained in an S4 object
-  of class \linkS4class{FuturesTS} from the \href{https://github.com/bautheac/pullit/}{\pkg{pullit}} package.
+  of class \linkS4class{FuturesTS} from the
+  \href{https://github.com/bautheac/pullit/}{\pkg{pullit}} package.
 }
 \examples{
 \dontrun{

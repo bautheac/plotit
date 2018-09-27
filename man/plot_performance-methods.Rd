@@ -17,7 +17,8 @@ plot_performance(object, ...)
 \S4method{plot_performance}{AssetPricingFactor}(object)
 }
 \arguments{
-\item{object}{an S4 object of class \linkS4class{DataHistorical} and childs or \linkS4class{AssetPricingFactor}.}
+\item{object}{an S4 object of class \linkS4class{DataHistorical} and childs or
+\linkS4class{AssetPricingFactor}.}
 
 \item{...}{extra parameters for \code{object} related methods.}
 
@@ -25,7 +26,8 @@ plot_performance(object, ...)
 }
 \description{
 Plots historical market performance inficators for various S4 objects
-  from packages belonging to the \href{https://bautheac.github.io/finRes/}{\pkg{finRes}} suite.
+  from packages belonging to the
+  \href{https://bautheac.github.io/finRes/}{\pkg{finRes}} suite.
 }
 \examples{
 \dontrun{
@@ -49,7 +51,8 @@ Plots historical market performance inficators for various S4 objects
       "LNA Comdty", "LPA Comdty", "LTA Comdty", "LXA Comdty",
       "CLA Comdty", "COA Comdty", "DLA Comdty", "NGA Comdty", "HOA Comdty", "XBA Comdty"),
     start = as.character(Sys.Date() - (2L * 365L)), end = as.character(Sys.Date()),
-    TS_positions = 1L, roll_type = "A", roll_days = 0L, roll_months = 0L, roll_adjustment = "N")
+    TS_positions = 1L, roll_type = "A", roll_days = 0L, roll_months = 0L,
+    roll_adjustment = "N")
   ## construct an asset pricing factor with factorem ####
   factor <- momentum_factor(term_structure)
   ## plot factor performance ####

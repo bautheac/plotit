@@ -22,7 +22,8 @@ Market performance plot for an ETF where data is retrieved from Bloomberg with [
 
 ``` r
 library(finRes)
-fund <- BBG_fund_market(tickers = "SPY US Equity", start = as.character(Sys.Date() - 365L), end = as.character(Sys.Date()))
+fund <- BBG_fund_market(tickers = "SPY US Equity", start = as.character(Sys.Date() - 365L), 
+end = as.character(Sys.Date()))
 plot_performance(fund, ticker = "SPY US Equity")
 ```
 

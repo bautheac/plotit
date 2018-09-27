@@ -101,22 +101,8 @@ setMethod("plot_performance", "AssetPricingFactor", function(object) {
 })
 
 
-#' @examples \dontrun{
-#'   library(finRes)
-#'   term_structure <- BBG_futures_market(type = 'term structure',
-#'     active_contract_tickers = c("C A Comdty", "S A Comdty", "SMA Comdty", "BOA Comdty",
-#'       "W A Comdty", "KWA Comdty", "MWA Comdty", "O A Comdty",
-#'       "CHEA Comdty", "V6A Comdty", "FCA Comdty", "LCA Comdty", "LHA Comdty",
-#'       "SBA Comdty", "CCA Comdty", "CTA Comdty", "KCA Comdty", "JOA Comdty", "LBA Comdty",
-#'       "GCA Comdty", "SIA Comdty", "PAA Comdty", "PLA Comdty", "LAA Comdty", "LLA Comdty",
-#'       "LNA Comdty", "LPA Comdty", "LTA Comdty", "LXA Comdty",
-#'       "CLA Comdty", "COA Comdty", "DLA Comdty", "NGA Comdty", "HOA Comdty", "XBA Comdty"),
-#'     start = as.character(Sys.Date() - (2L * 365L)), end = as.character(Sys.Date()),
-#'     TS_positions = 1L, roll_type = "A", roll_days = 0L, roll_months = 0L, roll_adjustment = "N")
-#'   factor <- momentum_factor(term_structure)
-#'   plot_positions(factor)
-#' }
-#'
+
+
 #' @rdname plot_positions-methods
 #' @aliases plot_positions,AssetPricingFactor
 #'

@@ -1,0 +1,19 @@
+title: plotit
+
+url: https://bautheac.github.io/plotit
+
+reference:
+  - title: fancy graphics
+    contents:
+      - plot_term_structure
+      - plot_performance
+      - plot_positions
+
+navbar:
+  title: ~
+  type: default
+  left:
+    - text: home
+      href: index.html
+    - text: functions
+      href: reference/index.html

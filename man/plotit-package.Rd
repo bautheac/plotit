@@ -6,11 +6,18 @@
 \alias{plotit-package}
 \title{plotit: nice plots for the \href{https://bautheac.github.io/finRes/}{\pkg{finRes}} suite}
 \description{
-Plot methods for various S4 objects ouput by functions in packages that belongs to
-  the \href{https://bautheac.github.io/finRes/}{\pkg{finRes}} suite.
+Plot methods for the \href{https://bautheac.github.io/finRes/}{\pkg{finRes}} suite.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://bautheac.github.io/plotit}
+  \item Report bugs at \url{https://github.com/bautheac/plotit/issues}
+}
+
 }
 \author{
-\strong{Maintainer}: Olivier Bautheac \email{o.bautheac@gmail.com}
+\strong{Maintainer}: Olivier Bauthéac \email{o.bautheac@gmail.com}
 
 }
 \keyword{internal}

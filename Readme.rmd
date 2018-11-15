@@ -1,36 +1,29 @@
-plotit
-================
-2018-11-15
-
+---
+title: plotit
+date: "`r Sys.Date()`"
+output: github_document
+---
 <style> body {text-align: justify} </style>
 
-[![Travis-CI Build
-Status](https://travis-ci.org/bautheac/plotit.svg?branch=master)](https://travis-ci.org/bautheac/plotit)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/bautheac/plotit?branch=master&svg=true)](https://ci.appveyor.com/project/bautheac/plotit)
+[![Travis-CI Build Status](https://travis-ci.org/bautheac/plotit.svg?branch=master)](https://travis-ci.org/bautheac/plotit)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/bautheac/plotit?branch=master&svg=true)](https://ci.appveyor.com/project/bautheac/plotit)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
-## plotit
 
-[plotit](https://bautheac.github.io/plotit/) belongs to the
-[finRes](https://bautheac.github.io/finRes/) suite where it provides
-visualization solutions for packages including, at the time of writing,
-[pullit](https://bautheac.github.io/pullit/) and
-[factorem](https://bautheac.github.io/factorem/). Install the
-development version from github with
-`devtools::install_github("bautheac/plotit")`.
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, eval = FALSE, comment = "#>")
+```
+
+## plotit
+[plotit](https://bautheac.github.io/plotit/) belongs to the [finRes](https://bautheac.github.io/finRes/) suite where it provides visualization solutions for packages including, at the time of writing, [pullit](https://bautheac.github.io/pullit/) and [factorem](https://bautheac.github.io/factorem/). Install the development version from github with `devtools::install_github("bautheac/plotit")`. 
+
 
 ## pullit
-
-plotit provides plot methods for a number of pullit objects including,
-at the time of writing, futures term structure (4class{FuturesTS}) and
-fund market (4class{FundMarket}) objects.
+plotit provides plot methods for a number of pullit objects including, at the time of writing, futures term structure (\linkS4class{FuturesTS}) and fund market (\linkS4class{FundMarket}) objects.
 
 ### futures term structure
-
 Plot a futures series term structure dynamics with:
-
-``` r
+```{r `plot fund term structure`}
 library(plotit); library(pullit); library(lubridate)
 
 end <- Sys.Date(); start <- end - years(2L)
@@ -48,10 +41,8 @@ plot_term_structure(object = futures_TS, ticker = "C A Comdty")
 ```
 
 ### fund market
-
 Plot historical fund performance with:
-
-``` r
+```{r `plot fund performance`}
 tickers <- c("SPY US Equity", "GLD US Equity", "EEM US Equity")
 
 fund_market <- BBG_fund_market(fund_tickers, start, end, verbose = FALSE)
@@ -59,20 +50,20 @@ fund_market <- BBG_fund_market(fund_tickers, start, end, verbose = FALSE)
 plot_performance(object = fund_market, ticker = "GLD US Equity")
 ```
 
+
 ## factorem
 
 ### performance overview
-
-``` r
+```{r `plot factor performance`}
 ranking_period = 1L
 
-futures_TS <- OI_nearby_factor(data = futures_TS, ranking_period = ranking_period)
+factor <- OI_nearby_factor(data = futures_TS, ranking_period = ranking_period)
 
-plot_performance(futures_TS)
+plot_performance(factor)
 ```
 
 ### positions overview
-
-``` r
-plot_positions(futures_TS)
+```{r `plot factor positions`}
+plot_positions(factor)
 ```
+

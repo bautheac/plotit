@@ -32,15 +32,18 @@ setMethod("plot_term_structure", "FuturesTS", function(object, ticker, frame) {
     dplyr::select(date, position, close = PX_LAST, `open interest` = OPEN_INT, volume = PX_VOLUME) %>%
     dplyr::arrange(date, position)
 
-  suppressWarnings(plotly::plot_ly(data, x = ~position, y = ~close, color = ~`open interest`, size = ~volume, frame = ~date,
-                                   text = ~paste0("close price:\t", close, "\nopen interest:\t", `open interest`, "\nvolume:\t", volume),
-                                   hoverinfo = "text", type = "scatter", mode = "lines+markers", line = list(color = "black", width = 1L)) %>%
-                     plotly::layout(title = ticker, xaxis = list(title = ""), yaxis = list(title = "close price"),
-                                    legend = list(orientation = "h", xanchor = "center",x = 0.5)) %>%
-                     plotly::animation_opts(frame = frame, transition = 0L, redraw = FALSE) %>%
-                     plotly::animation_button(x = 1L, xanchor = "right", y = 0L, yanchor = "bottom") %>%
-                     plotly::animation_slider(currentvalue = list(prefix = "", font = list(color = "black")))
+  if (is.null(frame)) frame <- NROW(unique(data$date)) / 100L
+
+  suppressWarnings(
+    plotly::plot_ly(data, x = ~position, y = ~close, color = ~`open interest`, size = ~volume, frame = ~date,
+                    text = ~paste0("close price:\t", close, "\nopen interest:\t", `open interest`, "\nvolume:\t", volume),
+                    hoverinfo = "text", type = "scatter", mode = "lines+markers", line = list(color = "black", width = 1L)) %>%
+      plotly::layout(title = ticker, xaxis = list(title = ""), yaxis = list(title = "close price")) %>%
+      plotly::animation_opts(frame = frame, transition = 0L, redraw = FALSE) %>%
+      plotly::animation_button(x = 1L, xanchor = "right", y = 0L, yanchor = "bottom") %>%
+      plotly::animation_slider(currentvalue = list(prefix = "", font = list(color = "black")))
   )
+
 })
 
 
@@ -63,12 +66,12 @@ setMethod("plot_performance", "FundMarket", function(object, ticker) {
 
   data(list = c("fields"), package = "BBGsymbols", envir = environment())
 
-  data <- dplyr::filter(object@data, ticker == !! ticker, field %in% c("CUR_MKT_CAP", "EQY_SH_OUT", "FUND_FLOW", "PX_LAST", "PX_VOLUME")) %>%
+  dataset <- dplyr::filter(object@data, ticker == !! ticker, field %in% c("CUR_MKT_CAP", "EQY_SH_OUT", "FUND_FLOW", "PX_LAST", "PX_VOLUME")) %>%
     dplyr::left_join(dplyr::filter(fields, instrument == "fund", book == "market") %>% dplyr::select(symbol, name), by = c("field" = "symbol")) %>%
-    dplyr::select(ticker, field = name, date, value) %>%
-    dplyr::mutate(field = forcats::as_factor(field))
+    dplyr::select(field = name, date, value) %>%
+    dplyr::mutate(field = forcats::as_factor(field), date = as.Date(date), value = as.numeric(value))
 
-  p <- ggplot2::ggplot(data = data, ggplot2::aes(x = date, y = value, colour = field)) +
+  p <- ggplot2::ggplot(data = dataset, ggplot2::aes(x = date, y = value, colour = field, group = 1L)) +
     ggplot2::geom_line(alpha = 0.6) + ggplot2::xlab(NULL) + ggplot2::ylab(NULL) +
     ggplot2::facet_wrap(~field, scales = "free") +
     ggthemes::theme_tufte(base_size = 12L) +
@@ -89,7 +92,7 @@ setMethod("plot_performance", "FundMarket", function(object, ticker) {
 #' @export
 setMethod("plot_performance", "AssetPricingFactor", function(object) {
 
-  data <- apply(dplyr::select(object@returns, tidyselect::matches("long|short|object")) + 1L,
+  data <- apply(dplyr::select(object@returns, tidyselect::matches("long|short|factor")) + 1L,
                 function(x) cumprod(x), MARGIN = 2L)
   data <- xts::xts(data, order.by = as.Date(object@returns$date))
 
@@ -110,17 +113,17 @@ setMethod("plot_performance", "AssetPricingFactor", function(object) {
 setMethod("plot_positions", "AssetPricingFactor", function(object) {
   data <- dplyr::group_by(object@positions, position) %>%
     tidyr::nest() %>%
-    dplyr::mutate(proportion = purrr::map(data, function(x) dplyr::group_by(x, name) %>%
+    dplyr::mutate(proportion = purrr::map(data, function(x) dplyr::group_by(x, `name`) %>%
                                             dplyr::tally() %>%
                                             dplyr::mutate(n = n / nrow(x))
     )) %>%
     tidyr::unnest(proportion) %>%
-    rbind(dplyr::group_by(data, name) %>%
+    rbind(dplyr::group_by(object@positions, `name`) %>%
             dplyr::tally() %>%
             dplyr::mutate(position = "factor", n = n / nrow(object@positions))) %>%
     dplyr::rename(proportion = n)
 
-  ggplot2::ggplot(data = data, mapping = ggplot2::aes(name, proportion, fill = name)) +
+  ggplot2::ggplot(data = data, mapping = ggplot2::aes(`name`, proportion, fill = `name`)) +
     ggplot2::geom_bar(stat = "identity") +
     ggplot2::labs(x = NULL, y = NULL) +
     ggplot2::scale_x_discrete(breaks = NULL) +

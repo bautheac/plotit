@@ -20,7 +20,7 @@
 #'
 #'
 #' @export
-setGeneric("plot_term_structure", function(object, ticker, frame) standardGeneric("plot_term_structure"))
+setGeneric("plot_term_structure", function(object, ticker, frame = NULL) standardGeneric("plot_term_structure"))
 
 
 

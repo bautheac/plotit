@@ -7,9 +7,9 @@
 \alias{plot_term_structure,DataHistorical,FuturesTS}
 \title{Plots futures term structure over time.}
 \usage{
-plot_term_structure(object, ticker, frame)
+plot_term_structure(object, ticker, frame = NULL)
 
-\S4method{plot_term_structure}{FuturesTS}(object, ticker, frame)
+\S4method{plot_term_structure}{FuturesTS}(object, ticker, frame = NULL)
 }
 \arguments{
 \item{object}{an S4 object of class \linkS4class{FuturesTS}.}

@@ -1,22 +1,40 @@
 
 # FuturesTS ####
 
-#' @rdname plot_term_structure-methods
-#' @aliases plot_term_structure,DataHistorical,FuturesTS
+#' @rdname plot-methods
+#' @aliases plot,FuturesTS
+#'
+#'
+#' @description Plots historical futures term structure data contained in an S4 object
+#'   of class \linkS4class{FuturesTS} from the
+#'   \href{https://bautheac.github.io/pullit/}{\pkg{pullit}} package.
+#'
+#'
+#' @param ticker a scalar character vector. Active contract Bloomberg ticker to plot the
+#'   term structure for.
+#'
+#' @param frame a scalar integer vector. Animation speed parameter; the lower the faster.
+#'
 #'
 #' @examples \dontrun{
+#'
 #'   library(finRes)
-#'   term_structure <- BBG_futures_market(type = 'term structure',
+#'
+#'   # pull data from Bloomberg with pullit
+#'   term_structure <- pull_futures_market(Bloomberg = T, type = 'term structure',
 #'     active_contract_tickers = "C A Comdty", start = as.character(Sys.Date() - 365L),
-#'     end = as.character(Sys.Date()), TS_positions = 1L:10L,
-#'     roll_type = "A", roll_days = 0L, roll_months = 0L, roll_adjustment = "N")
-#'   plot_term_structure(term_structure, ticker = "C A Comdty")
+#'     end = as.character(Sys.Date()), TS_positions = 1L:10L, roll_type = "A",
+#'     roll_days = 0L, roll_months = 0L, roll_adjustment = "N")
+#'
+#'   # plot futures term structure
+#'   plot(term_structure, ticker = "C A Comdty")
+#'
 #' }
 #'
 #' @importClassesFrom pullit FuturesTS
 #'
 #' @export
-setMethod("plot_term_structure", "FuturesTS", function(object, ticker, frame) {
+setMethod("plot", "FuturesTS", function(object, ticker, frame = NULL) {
 
   if (! all(rlang::is_scalar_character(ticker), ticker %in% object@active_contract_tickers$`active contract ticker`))
     stop("The parameter 'ticker' must be supplied as a scalar character vector; one of '",
@@ -50,16 +68,37 @@ setMethod("plot_term_structure", "FuturesTS", function(object, ticker, frame) {
 
 # FundMarket ####
 
+#' @rdname plot-methods
+#' @aliases plot,FundMarket
+#'
+#'
+#' @description Plots historical market performance indicators for S4 objects
+#'   of class \linkS4class{FundMarket} from the
+#'   \href{https://bautheac.github.io/pullit/}{\pkg{pullit}} package.
+#'
+#'
 #' @param ticker a scalar vector. Specifies the fund Bloomberg ticker to plot performance for.
 #'
-#' @rdname plot_performance-methods
-#' @aliases plot_performance,DataHistorical,FundMarket
+#'
+#' @examples \dontrun{
+#'
+#'   library(finRes)
+#'
+#'   # pull data from Bloomberg with pullit
+#'   fund <- pull_fund_market(Bloomberg = T, tickers = "SPY US Equity",
+#'     start = as.character(Sys.Date() - 365L), end = as.character(Sys.Date()))
+#'
+#'   # plot fund performance
+#'   plot(fund, ticker = "SPY US Equity")
+#'
+#' }
+#'
 #'
 #' @importClassesFrom pullit FundMarket
 #' @import BBGsymbols
 #'
 #' @export
-setMethod("plot_performance", "FundMarket", function(object, ticker) {
+setMethod("plot", "FundMarket", function(object, ticker) {
 
   if (! all(rlang::is_scalar_character(ticker), ticker %in% object@tickers$ticker))
     stop("The parameter 'ticker' must be supplied as a scalar character vector; one of '", paste(object@tickers$ticker, collapse = "', '"), "'.")
@@ -84,53 +123,58 @@ setMethod("plot_performance", "FundMarket", function(object, ticker) {
 
 
 
-#' @rdname plot_performance-methods
-#' @aliases plot_performance,AssetPricingFactor
+
+#' @rdname plot-methods
+#' @aliases plot,AssetPricingFactor
+#'
+#'
+#' @description Plots historical market performance (type = "performance")
+#'   or positions summary (type = "positions") by leg for S4 objects of class
+#'   \linkS4class{AssetPricingFactor} from the
+#'   \href{https://bautheac.github.io/factorem/}{\pkg{factorem}} package..
+#'
+#'
+#' @param type a scalar character vector. Specifies the type of plot
+#'   desired: "performance" or "positions".
+#'
+#'
+#' @examples \dontrun{
+#'
+#'   library(finRes)
+#'
+#'   # pull data from Bloomberg via pullit
+#'   tickers <- c("C A Comdty", "S A Comdty", "SMA Comdty", "BOA Comdty",
+#'       "W A Comdty", "KWA Comdty", "MWA Comdty", "O A Comdty")#'
+#'   term_structure <- pull_futures_market(Bloomberg = T, type = 'term structure',
+#'     active_contract_tickers = tickers, start = as.character(Sys.Date() - (2L * 365L)),
+#'     end = as.character(Sys.Date()), TS_positions = 1L, roll_type = "A", roll_days = 0L,
+#'     roll_months = 0L, roll_adjustment = "N")
+#'
+#'   # construct an asset pricing factor with factorem
+#'   factor <- momentum_factor(term_structure)
+#'
+#'   # plot factor performance
+#'   plot(factor, type = "performance")
+#'
+#'   # plot factor performance
+#'   plot(factor, type = "positions")
+#'
+#' }
+#'
 #'
 #' @importClassesFrom factorem AssetPricingFactor
 #'
 #' @export
-setMethod("plot_performance", "AssetPricingFactor", function(object) {
+setMethod("plot", "AssetPricingFactor", function(object, type) {
 
-  data <- apply(dplyr::select(object@returns, tidyselect::matches("long|short|factor")) + 1L,
-                function(x) cumprod(x), MARGIN = 2L)
-  data <- xts::xts(data, order.by = as.Date(object@returns$date))
-
-  if (all(c("long", "short") %in% names(data))) dygraphs::dygraph(data, main = paste(object@name, "factor")) %>%
-    dygraphs::dyLimit(1L, label = NULL, strokePattern = "solid", color = "blue")
-  else dygraphs::dygraph(data[, "factor"], main = paste(object@name, "factor"))%>%
-    dygraphs::dyLimit(1L, label = NULL, strokePattern = "solid", color = "blue")
+  switch(type,
+         performance = plot_performance(object),
+         positions = plot_positions(object),
+         stop("The parameters 'type' must be supplied as a scalar character vector:
+              'performance' or 'positions'.")
+         )
 
 })
 
 
-
-
-#' @rdname plot_positions-methods
-#' @aliases plot_positions,AssetPricingFactor
-#'
-#' @export
-setMethod("plot_positions", "AssetPricingFactor", function(object) {
-  data <- dplyr::group_by(object@positions, position) %>%
-    tidyr::nest() %>%
-    dplyr::mutate(proportion = purrr::map(data, function(x) dplyr::group_by(x, `name`) %>%
-                                            dplyr::tally() %>%
-                                            dplyr::mutate(n = n / nrow(x))
-    )) %>%
-    tidyr::unnest(proportion) %>%
-    rbind(dplyr::group_by(object@positions, `name`) %>%
-            dplyr::tally() %>%
-            dplyr::mutate(position = "factor", n = n / nrow(object@positions))) %>%
-    dplyr::rename(proportion = n)
-
-  ggplot2::ggplot(data = data, mapping = ggplot2::aes(`name`, proportion, fill = `name`)) +
-    ggplot2::geom_bar(stat = "identity") +
-    ggplot2::labs(x = NULL, y = NULL) +
-    ggplot2::scale_x_discrete(breaks = NULL) +
-    ggplot2::scale_y_continuous(labels = scales::percent) +
-    ggplot2::facet_wrap(~position, ncol = 1L) +
-    ggthemes::theme_tufte() +
-    ggplot2::theme(legend.title = ggplot2::element_blank())
-
-})
 

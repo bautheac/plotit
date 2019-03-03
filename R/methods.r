@@ -1,4 +1,3 @@
-
 # FuturesTS ####
 
 #' @rdname plot-methods
@@ -170,6 +169,3 @@ setMethod("plot", "AssetPricingFactor", function(object, type) {
          )
 
 })
-
-
-

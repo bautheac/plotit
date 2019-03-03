@@ -66,4 +66,3 @@ plot(factor, type = "performance")
 ```{r `plot factor positions`}
 plot(factor, type = "positions")
 ```
-

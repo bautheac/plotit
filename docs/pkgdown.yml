@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 pandoc: 1.19.2.1
 pkgdown: 1.3.0
 pkgdown_sha: ~
@@ -7,13 +6,3 @@ urls:
   reference: https://bautheac.github.io/plotit/reference
   article: https://bautheac.github.io/plotit/articles
 
-=======
-pandoc: 2.3.1
-pkgdown: 1.1.0
-pkgdown_sha: ~
-articles: []
-urls:
-  reference: https://bautheac.github.io/plotit/reference
-  article: https://bautheac.github.io/plotit/articles
-
->>>>>>> 4b891b10a9ed4ee565da5759428162b000fd2066

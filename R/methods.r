@@ -10,8 +10,7 @@
 #'   \href{https://bautheac.github.io/pullit/}{\pkg{pullit}} package.
 #'
 #'
-#' @param ticker a scalar character vector. Active contract Bloomberg ticker to plot the
-#'   term structure for.
+#' @param ticker a scalar character vector. Bloomberg identifier.
 #'
 #' @param frame a scalar integer vector. Animation speed parameter; the lower the faster.
 #'
@@ -75,10 +74,6 @@ setMethod("plot", "FuturesTS", function(object, ticker, frame = NULL) {
 #' @description Plots historical market performance indicators for S4 objects
 #'   of class \linkS4class{FundMarket} from the
 #'   \href{https://bautheac.github.io/pullit/}{\pkg{pullit}} package.
-#'
-#'
-#' @param ticker a scalar vector. Specifies the fund Bloomberg ticker to plot performance for.
-#'
 #'
 #' @examples \dontrun{
 #'

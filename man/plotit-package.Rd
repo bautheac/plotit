@@ -6,7 +6,7 @@
 \alias{plotit-package}
 \title{plotit: nice plots for the \href{https://bautheac.github.io/finRes/}{\pkg{finRes}} suite}
 \description{
-Plot methods for the \href{https://bautheac.github.io/finRes/}{\pkg{finRes}} suite.
+Plot methods for the finRes suite.
 }
 \seealso{
 Useful links:

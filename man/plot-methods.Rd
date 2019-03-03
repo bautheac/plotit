@@ -22,15 +22,14 @@ plot(object, ...)
 \arguments{
 \item{object}{an S4 object from the finRes suite.}
 
-\item{ticker}{a scalar character vector. Active contract Bloomberg ticker to plot the
-term structure for.}
+\item{...}{extra plot parameters.}
+
+\item{ticker}{a scalar character vector. Bloomberg identifier.}
 
 \item{frame}{a scalar integer vector. Animation speed parameter; the lower the faster.}
 
 \item{type}{a scalar character vector. Specifies the type of plot
 desired: "performance" or "positions".}
-
-\item{ticker}{a scalar vector. Specifies the fund Bloomberg ticker to plot performance for.}
 }
 \description{
 Plots historical futures term structure data contained in an S4 object

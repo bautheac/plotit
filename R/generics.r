@@ -3,6 +3,8 @@
 #'
 #' @param object an S4 object from the finRes suite.
 #'
+#' @param ... extra plot parameters.
+#'
 #' @docType methods
 #'
 #' @rdname plot-methods

@@ -1,21 +1,25 @@
-plotit
+plotit\!
 ================
-2019-03-03
 
 <style> body {text-align: justify} </style>
-[![Travis-CI Build Status](https://travis-ci.org/bautheac/plotit.svg?branch=master)](https://travis-ci.org/bautheac/plotit) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/bautheac/plotit?branch=master&svg=true)](https://ci.appveyor.com/project/bautheac/plotit) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
-plotit
-------
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
-[plotit](https://bautheac.github.io/plotit/) belongs to the [finRes](https://bautheac.github.io/finRes/) suite where it provides visualization solutions for packages including, at the time of writing, [pullit](https://bautheac.github.io/pullit/) and [factorem](https://bautheac.github.io/factorem/). Install the development version from github with `devtools::install_github("bautheac/plotit")`.
+[plotit](https://bautheac.github.io/plotit/) belongs to the
+[finRes](https://bautheac.github.io/finRes/) suite where it provides
+visualization solutions for packages including, at the time of writing,
+[pullit](https://bautheac.github.io/pullit/) and
+[factorem](https://bautheac.github.io/factorem/). Install the
+development version from github with
+`devtools::install_github("bautheac/plotit")`.
 
-pullit
-------
+## pullit
 
-plotit provides plot methods for a number of pullit objects including, at the time of writing, futures term structure (4class{FuturesTS}) and fund market (4class{FundMarket}) objects.
+plotit provides plot methods for a number of pullit objects including,
+at the time of writing, futures term structure (4class{FuturesTS}) and
+fund market (4class{FundMarket}) objects.
 
-### futures term structure
+### Futures term structure
 
 Plot a futures series term structure dynamics with:
 
@@ -36,7 +40,7 @@ futures_TS <- pull_futures_market(source = "Bloomberg", type = "term structure",
 plot(object = futures_TS, ticker = "C A Comdty")
 ```
 
-### fund market
+### Fund market
 
 Plot historical fund performance with:
 
@@ -48,10 +52,9 @@ fund_market <- pull_fund_market(source = "Bloomberg", fund_tickers, start, end, 
 plot(object = fund_market, ticker = "GLD US Equity")
 ```
 
-factorem
---------
+## factorem
 
-### performance overview
+### Performance overview
 
 ``` r
 ranking_period = 1L
@@ -61,7 +64,7 @@ factor <- OI_nearby_factor(data = futures_TS, ranking_period = ranking_period)
 plot(factor, type = "performance")
 ```
 
-### positions overview
+### Positions overview
 
 ``` r
 plot(factor, type = "positions")

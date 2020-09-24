@@ -6,23 +6,31 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>plotit • plotit</title>
+<title>plotit! • plotit</title>
+
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="bootstrap-toc.css">
+<script src="bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="pkgdown.css" rel="stylesheet">
@@ -30,7 +38,9 @@
 
 
 
-<meta property="og:title" content="plotit" />
+
+<meta property="og:title" content="plotit!" />
+
 
 
 
@@ -44,9 +54,10 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-title-body">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -73,9 +84,13 @@
   <a href="reference/index.html">functions</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/bautheac/plotit/">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -83,56 +98,56 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="contents col-md-9">
     <div class="page-header">
-      <h1>plotit</h1>
+      <h1>plotit!</h1>
     </div>
 
 <div id="plotit" class="section level1">
 
-<p>2019-03-03</p>
 <style> body {text-align: justify} </style>
-<p><a href="https://travis-ci.org/bautheac/plotit"><img src="https://travis-ci.org/bautheac/plotit.svg?branch=master" alt="Travis-CI Build Status"></a> <a href="https://ci.appveyor.com/project/bautheac/plotit"><img src="https://ci.appveyor.com/api/projects/status/github/bautheac/plotit?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="lifecycle"></a></p>
-<div id="plotit-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#plotit-1" class="anchor"></a>plotit</h2>
-<p><a href="https://bautheac.github.io/plotit/">plotit</a> belongs to the <a href="https://bautheac.github.io/finRes/">finRes</a> suite where it provides visualization solutions for packages including, at the time of writing, <a href="https://bautheac.github.io/pullit/">pullit</a> and <a href="https://bautheac.github.io/factorem/">factorem</a>. Install the development version from github with <code><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">devtools::install_github("bautheac/plotit")</a></code>.</p>
-</div>
+<p><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="lifecycle"></a></p>
+<p><a href="https://bautheac.github.io/plotit/">plotit</a> belongs to the <a href="https://bautheac.github.io/finRes/">finRes</a> suite where it provides visualization solutions for packages including, at the time of writing, <a href="https://bautheac.github.io/pullit/">pullit</a> and <a href="https://bautheac.github.io/factorem/">factorem</a>. Install the development version from github with <code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github("bautheac/plotit")</a></code>.</p>
 <div id="pullit" class="section level2">
 <h2 class="hasAnchor">
 <a href="#pullit" class="anchor"></a>pullit</h2>
 <p>plotit provides plot methods for a number of pullit objects including, at the time of writing, futures term structure (4class{FuturesTS}) and fund market (4class{FundMarket}) objects.</p>
 <div id="futures-term-structure" class="section level3">
 <h3 class="hasAnchor">
-<a href="#futures-term-structure" class="anchor"></a>futures term structure</h3>
+<a href="#futures-term-structure" class="anchor"></a>Futures term structure</h3>
 <p>Plot a futures series term structure dynamics with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(plotit); <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(pullit); <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(lubridate)
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://bautheac.github.io/plotit">plotit</a></span>); <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://bautheac.github.io/pullit">pullit</a></span>); <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://lubridate.tidyverse.org">lubridate</a></span>)
 
-end &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Sys.time">Sys.Date</a></span>(); start &lt;-<span class="st"> </span>end <span class="op">-</span><span class="st"> </span><span class="kw"><a href="http://lubridate.tidyverse.org/reference/period.html">years</a></span>(2L)
-tickers &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"C A Comdty"</span>, <span class="st">"CCA Comdty"</span>, <span class="st">"CLA Comdty"</span>, <span class="st">"CTA Comdty"</span>, 
+<span class="kw">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span>(); <span class="kw">start</span> <span class="op">&lt;-</span> <span class="kw">end</span> <span class="op">-</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/period.html">years</a></span>(<span class="fl">2L</span>)
+<span class="kw">tickers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"C A Comdty"</span>, <span class="st">"CCA Comdty"</span>, <span class="st">"CLA Comdty"</span>, <span class="st">"CTA Comdty"</span>, 
              <span class="st">"FCA Comdty"</span>, <span class="st">"GCA Comdty"</span>, <span class="st">"HGA Comdty"</span>, <span class="st">"HOA Comdty"</span>, 
              <span class="st">"KCA Comdty"</span>, <span class="st">"KWA Comdty"</span>, <span class="st">"LBA Comdty"</span>, <span class="st">"LCA Comdty"</span>, 
              <span class="st">"LHA Comdty"</span>, <span class="st">"NGA Comdty"</span>, <span class="st">"O A Comdty"</span>, <span class="st">"PAA Comdty"</span>, 
               <span class="st">"S A Comdty"</span>, <span class="st">"SIA Comdty"</span>, <span class="st">"W A Comdty"</span>, <span class="st">"XBA Comdty"</span>)
 
-futures_TS &lt;-<span class="st"> </span><span class="kw"><a href="https://bautheac.github.io/pullit/reference/pull_futures_market.html">pull_futures_market</a></span>(<span class="dt">source =</span> <span class="st">"Bloomberg"</span>, <span class="dt">type =</span> <span class="st">"term structure"</span>, <span class="dt">active_contract_tickers =</span> tickers, 
-                                  start, end, <span class="dt">TS_positions =</span> 1L<span class="op">:</span>5L, <span class="dt">roll_type =</span> <span class="st">"A"</span>, <span class="dt">roll_days =</span> 0L, 
-                                  <span class="dt">roll_months =</span> 0L, <span class="dt">roll_adjustment =</span> <span class="st">"N"</span>, <span class="dt">verbose =</span> <span class="ot">FALSE</span>)
+<span class="kw">futures_TS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bautheac.github.io/pullit/reference/pull_futures_market.html">pull_futures_market</a></span>(source = <span class="st">"Bloomberg"</span>, type = <span class="st">"term structure"</span>, active_contract_tickers = <span class="kw">tickers</span>, 
+                                  <span class="kw">start</span>, <span class="kw">end</span>, TS_positions = <span class="fl">1L</span><span class="op">:</span><span class="fl">5L</span>, roll_type = <span class="st">"A"</span>, roll_days = <span class="fl">0L</span>, 
+                                  roll_months = <span class="fl">0L</span>, roll_adjustment = <span class="st">"N"</span>, verbose = <span class="fl">FALSE</span>)
 
-<span class="kw"><a href="reference/plot-methods.html">plot</a></span>(<span class="dt">object =</span> futures_TS, <span class="dt">ticker =</span> <span class="st">"C A Comdty"</span>)</code></pre></div>
+<span class="fu"><a href="reference/plot.html">plot</a></span>(object = <span class="kw">futures_TS</span>, ticker = <span class="st">"C A Comdty"</span>)
+</pre></div>
 </div>
 <div id="fund-market" class="section level3">
 <h3 class="hasAnchor">
-<a href="#fund-market" class="anchor"></a>fund market</h3>
+<a href="#fund-market" class="anchor"></a>Fund market</h3>
 <p>Plot historical fund performance with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tickers &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"SPY US Equity"</span>, <span class="st">"GLD US Equity"</span>, <span class="st">"EEM US Equity"</span>)
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="kw">tickers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"SPY US Equity"</span>, <span class="st">"GLD US Equity"</span>, <span class="st">"EEM US Equity"</span>)
 
-fund_market &lt;-<span class="st"> </span><span class="kw"><a href="https://bautheac.github.io/pullit/reference/pull_fund_market.html">pull_fund_market</a></span>(<span class="dt">source =</span> <span class="st">"Bloomberg"</span>, fund_tickers, start, end, <span class="dt">verbose =</span> <span class="ot">FALSE</span>)
+<span class="kw">fund_market</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bautheac.github.io/pullit/reference/pull_fund_market.html">pull_fund_market</a></span>(source = <span class="st">"Bloomberg"</span>, <span class="kw">fund_tickers</span>, <span class="kw">start</span>, <span class="kw">end</span>, verbose = <span class="fl">FALSE</span>)
 
-<span class="kw"><a href="reference/plot-methods.html">plot</a></span>(<span class="dt">object =</span> fund_market, <span class="dt">ticker =</span> <span class="st">"GLD US Equity"</span>)</code></pre></div>
+<span class="fu"><a href="reference/plot.html">plot</a></span>(object = <span class="kw">fund_market</span>, ticker = <span class="st">"GLD US Equity"</span>)
+</pre></div>
 </div>
 </div>
 <div id="factorem" class="section level2">
@@ -140,24 +155,35 @@ fund_market &lt;-<span class="st"> </span><span class="kw"><a href="https://baut
 <a href="#factorem" class="anchor"></a>factorem</h2>
 <div id="performance-overview" class="section level3">
 <h3 class="hasAnchor">
-<a href="#performance-overview" class="anchor"></a>performance overview</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ranking_period =<span class="st"> </span>1L
+<a href="#performance-overview" class="anchor"></a>Performance overview</h3>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="kw">ranking_period</span> <span class="op">=</span> <span class="fl">1L</span>
 
-factor &lt;-<span class="st"> </span><span class="kw">OI_nearby_factor</span>(<span class="dt">data =</span> futures_TS, <span class="dt">ranking_period =</span> ranking_period)
+<span class="kw">factor</span> <span class="op">&lt;-</span> <span class="fu">OI_nearby_factor</span>(data = <span class="kw">futures_TS</span>, ranking_period = <span class="kw">ranking_period</span>)
 
-<span class="kw"><a href="reference/plot-methods.html">plot</a></span>(factor, <span class="dt">type =</span> <span class="st">"performance"</span>)</code></pre></div>
+<span class="fu"><a href="reference/plot.html">plot</a></span>(<span class="kw">factor</span>, type = <span class="st">"performance"</span>)
+</pre></div>
 </div>
 <div id="positions-overview" class="section level3">
 <h3 class="hasAnchor">
-<a href="#positions-overview" class="anchor"></a>positions overview</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/plot-methods.html">plot</a></span>(factor, <span class="dt">type =</span> <span class="st">"positions"</span>)</code></pre></div>
+<a href="#positions-overview" class="anchor"></a>Positions overview</h3>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="fu"><a href="reference/plot.html">plot</a></span>(<span class="kw">factor</span>, type = <span class="st">"positions"</span>)
+</pre></div>
 </div>
 </div>
 </div>
 
   </div>
 
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
+  </div>
+
 </div>
+
 
 
       <footer>
@@ -166,13 +192,16 @@ factor &lt;-<span class="st"> </span><span class="kw">OI_nearby_factor</span>(<s
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

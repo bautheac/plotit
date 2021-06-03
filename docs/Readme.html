@@ -87,7 +87,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/bautheac/plotit/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -115,61 +115,60 @@
 <div id="pullit" class="section level2">
 <h2 class="hasAnchor">
 <a href="#pullit" class="anchor"></a>pullit</h2>
-<p>plotit provides plot methods for a number of pullit objects including, at the time of writing, futures term structure (4class{FuturesTS}) and fund market (4class{FundMarket}) objects.</p>
+<p><a href="https://bautheac.github.io/plotit/">plotit</a> provides plot methods for a number of <a href="https://bautheac.github.io/pullit/">pullit</a> objects including, at the time of writing, futures term structure (4class{FuturesTS}) and fund market (4class{FundMarket}) objects.</p>
 <div id="futures-term-structure" class="section level3">
 <h3 class="hasAnchor">
 <a href="#futures-term-structure" class="anchor"></a>Futures term structure</h3>
 <p>Plot a futures series term structure dynamics with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://bautheac.github.io/plotit">plotit</a></span>); <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://bautheac.github.io/pullit">pullit</a></span>); <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://lubridate.tidyverse.org">lubridate</a></span>)
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bautheac.github.io/plotit">plotit</a></span><span class="op">)</span>; <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bautheac.github.io/pullit">pullit</a></span><span class="op">)</span>; <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
 
-<span class="kw">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span>(); <span class="kw">start</span> <span class="op">&lt;-</span> <span class="kw">end</span> <span class="op">-</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/period.html">years</a></span>(<span class="fl">2L</span>)
-<span class="kw">tickers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"C A Comdty"</span>, <span class="st">"CCA Comdty"</span>, <span class="st">"CLA Comdty"</span>, <span class="st">"CTA Comdty"</span>, 
+<span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>; <span class="va">start</span> <span class="op">&lt;-</span> <span class="va">end</span> <span class="op">-</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/period.html">years</a></span><span class="op">(</span><span class="fl">2L</span><span class="op">)</span>
+<span class="va">tickers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"C A Comdty"</span>, <span class="st">"CCA Comdty"</span>, <span class="st">"CLA Comdty"</span>, <span class="st">"CTA Comdty"</span>, 
              <span class="st">"FCA Comdty"</span>, <span class="st">"GCA Comdty"</span>, <span class="st">"HGA Comdty"</span>, <span class="st">"HOA Comdty"</span>, 
              <span class="st">"KCA Comdty"</span>, <span class="st">"KWA Comdty"</span>, <span class="st">"LBA Comdty"</span>, <span class="st">"LCA Comdty"</span>, 
              <span class="st">"LHA Comdty"</span>, <span class="st">"NGA Comdty"</span>, <span class="st">"O A Comdty"</span>, <span class="st">"PAA Comdty"</span>, 
-              <span class="st">"S A Comdty"</span>, <span class="st">"SIA Comdty"</span>, <span class="st">"W A Comdty"</span>, <span class="st">"XBA Comdty"</span>)
+              <span class="st">"S A Comdty"</span>, <span class="st">"SIA Comdty"</span>, <span class="st">"W A Comdty"</span>, <span class="st">"XBA Comdty"</span><span class="op">)</span>
 
-<span class="kw">futures_TS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bautheac.github.io/pullit/reference/pull_futures_market.html">pull_futures_market</a></span>(source = <span class="st">"Bloomberg"</span>, type = <span class="st">"term structure"</span>, active_contract_tickers = <span class="kw">tickers</span>, 
-                                  <span class="kw">start</span>, <span class="kw">end</span>, TS_positions = <span class="fl">1L</span><span class="op">:</span><span class="fl">5L</span>, roll_type = <span class="st">"A"</span>, roll_days = <span class="fl">0L</span>, 
-                                  roll_months = <span class="fl">0L</span>, roll_adjustment = <span class="st">"N"</span>, verbose = <span class="fl">FALSE</span>)
+<span class="va">futures_TS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bautheac.github.io/pullit/reference/pull_futures_market.html">pull_futures_market</a></span><span class="op">(</span>source <span class="op">=</span> <span class="st">"Bloomberg"</span>, type <span class="op">=</span> <span class="st">"term structure"</span>, active_contract_tickers <span class="op">=</span> <span class="va">tickers</span>, 
+                                  <span class="va">start</span>, <span class="va">end</span>, TS_positions <span class="op">=</span> <span class="fl">1L</span><span class="op">:</span><span class="fl">5L</span>, roll_type <span class="op">=</span> <span class="st">"A"</span>, roll_days <span class="op">=</span> <span class="fl">0L</span>, 
+                                  roll_months <span class="op">=</span> <span class="fl">0L</span>, roll_adjustment <span class="op">=</span> <span class="st">"N"</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
-<span class="fu"><a href="reference/plot.html">plot</a></span>(object = <span class="kw">futures_TS</span>, ticker = <span class="st">"C A Comdty"</span>)
-</pre></div>
+<span class="fu"><a href="reference/plot.html">plot</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">futures_TS</span>, ticker <span class="op">=</span> <span class="st">"C A Comdty"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="fund-market" class="section level3">
 <h3 class="hasAnchor">
 <a href="#fund-market" class="anchor"></a>Fund market</h3>
 <p>Plot historical fund performance with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">tickers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"SPY US Equity"</span>, <span class="st">"GLD US Equity"</span>, <span class="st">"EEM US Equity"</span>)
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tickers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"SPY US Equity"</span>, <span class="st">"GLD US Equity"</span>, <span class="st">"EEM US Equity"</span><span class="op">)</span>
 
-<span class="kw">fund_market</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bautheac.github.io/pullit/reference/pull_fund_market.html">pull_fund_market</a></span>(source = <span class="st">"Bloomberg"</span>, <span class="kw">fund_tickers</span>, <span class="kw">start</span>, <span class="kw">end</span>, verbose = <span class="fl">FALSE</span>)
+<span class="va">fund_market</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bautheac.github.io/pullit/reference/pull_fund_market.html">pull_fund_market</a></span><span class="op">(</span>source <span class="op">=</span> <span class="st">"Bloomberg"</span>, <span class="va">fund_tickers</span>, <span class="va">start</span>, <span class="va">end</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
-<span class="fu"><a href="reference/plot.html">plot</a></span>(object = <span class="kw">fund_market</span>, ticker = <span class="st">"GLD US Equity"</span>)
-</pre></div>
+<span class="fu"><a href="reference/plot.html">plot</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">fund_market</span>, ticker <span class="op">=</span> <span class="st">"GLD US Equity"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="factorem" class="section level2">
 <h2 class="hasAnchor">
 <a href="#factorem" class="anchor"></a>factorem</h2>
+<p>Similarly <a href="https://bautheac.github.io/plotit/">plotit</a> provides plot methods for <a href="https://bautheac.github.io/pullit/">factorem</a> factor objects.</p>
 <div id="performance-overview" class="section level3">
 <h3 class="hasAnchor">
 <a href="#performance-overview" class="anchor"></a>Performance overview</h3>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw">ranking_period</span> <span class="op">=</span> <span class="fl">1L</span>
+<p>Plot historical factor performance with:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ranking_period</span> <span class="op">=</span> <span class="fl">1L</span>
 
-<span class="kw">factor</span> <span class="op">&lt;-</span> <span class="fu">OI_nearby_factor</span>(data = <span class="kw">futures_TS</span>, ranking_period = <span class="kw">ranking_period</span>)
+<span class="va">factor</span> <span class="op">&lt;-</span> <span class="fu">OI_nearby_factor</span><span class="op">(</span>data <span class="op">=</span> <span class="va">futures_TS</span>, ranking_period <span class="op">=</span> <span class="va">ranking_period</span><span class="op">)</span>
 
-<span class="fu"><a href="reference/plot.html">plot</a></span>(<span class="kw">factor</span>, type = <span class="st">"performance"</span>)
-</pre></div>
+<span class="fu"><a href="reference/plot.html">plot</a></span><span class="op">(</span><span class="va">factor</span>, type <span class="op">=</span> <span class="st">"performance"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="positions-overview" class="section level3">
 <h3 class="hasAnchor">
 <a href="#positions-overview" class="anchor"></a>Positions overview</h3>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="reference/plot.html">plot</a></span>(<span class="kw">factor</span>, type = <span class="st">"positions"</span>)
-</pre></div>
+<p>Plot factor positions statistics with:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/plot.html">plot</a></span><span class="op">(</span><span class="va">factor</span>, type <span class="op">=</span> <span class="st">"positions"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 </div>

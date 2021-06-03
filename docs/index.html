@@ -47,7 +47,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/bautheac/plotit/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -63,72 +63,7 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="plotit" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#plotit" class="anchor"></a>plotit!</h1></div>
-<style> body {text-align: justify} </style>
-<p><a href="https://bautheac.github.io/plotit/">plotit</a> belongs to the <a href="https://bautheac.github.io/finRes/">finRes</a> suite where it provides visualization solutions for packages including, at the time of writing, <a href="https://bautheac.github.io/pullit/">pullit</a> and <a href="https://bautheac.github.io/factorem/">factorem</a>. Install the development version from github with <code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github("bautheac/plotit")</a></code>.</p>
-<div id="pullit" class="section level2">
-<h2 class="hasAnchor">
-<a href="#pullit" class="anchor"></a>pullit</h2>
-<p>plotit provides plot methods for a number of pullit objects including, at the time of writing, futures term structure (4class{FuturesTS}) and fund market (4class{FundMarket}) objects.</p>
-<div id="futures-term-structure" class="section level3">
-<h3 class="hasAnchor">
-<a href="#futures-term-structure" class="anchor"></a>Futures term structure</h3>
-<p>Plot a futures series term structure dynamics with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://bautheac.github.io/plotit">plotit</a></span>); <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://bautheac.github.io/pullit">pullit</a></span>); <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://lubridate.tidyverse.org">lubridate</a></span>)
-
-<span class="kw">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span>(); <span class="kw">start</span> <span class="op">&lt;-</span> <span class="kw">end</span> <span class="op">-</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/period.html">years</a></span>(<span class="fl">2L</span>)
-<span class="kw">tickers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"C A Comdty"</span>, <span class="st">"CCA Comdty"</span>, <span class="st">"CLA Comdty"</span>, <span class="st">"CTA Comdty"</span>, 
-             <span class="st">"FCA Comdty"</span>, <span class="st">"GCA Comdty"</span>, <span class="st">"HGA Comdty"</span>, <span class="st">"HOA Comdty"</span>, 
-             <span class="st">"KCA Comdty"</span>, <span class="st">"KWA Comdty"</span>, <span class="st">"LBA Comdty"</span>, <span class="st">"LCA Comdty"</span>, 
-             <span class="st">"LHA Comdty"</span>, <span class="st">"NGA Comdty"</span>, <span class="st">"O A Comdty"</span>, <span class="st">"PAA Comdty"</span>, 
-              <span class="st">"S A Comdty"</span>, <span class="st">"SIA Comdty"</span>, <span class="st">"W A Comdty"</span>, <span class="st">"XBA Comdty"</span>)
-
-<span class="kw">futures_TS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bautheac.github.io/pullit/reference/pull_futures_market.html">pull_futures_market</a></span>(source = <span class="st">"Bloomberg"</span>, type = <span class="st">"term structure"</span>, active_contract_tickers = <span class="kw">tickers</span>, 
-                                  <span class="kw">start</span>, <span class="kw">end</span>, TS_positions = <span class="fl">1L</span><span class="op">:</span><span class="fl">5L</span>, roll_type = <span class="st">"A"</span>, roll_days = <span class="fl">0L</span>, 
-                                  roll_months = <span class="fl">0L</span>, roll_adjustment = <span class="st">"N"</span>, verbose = <span class="fl">FALSE</span>)
-
-<span class="fu"><a href="reference/plot.html">plot</a></span>(object = <span class="kw">futures_TS</span>, ticker = <span class="st">"C A Comdty"</span>)
-</pre></div>
-</div>
-<div id="fund-market" class="section level3">
-<h3 class="hasAnchor">
-<a href="#fund-market" class="anchor"></a>Fund market</h3>
-<p>Plot historical fund performance with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">tickers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"SPY US Equity"</span>, <span class="st">"GLD US Equity"</span>, <span class="st">"EEM US Equity"</span>)
-
-<span class="kw">fund_market</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://bautheac.github.io/pullit/reference/pull_fund_market.html">pull_fund_market</a></span>(source = <span class="st">"Bloomberg"</span>, <span class="kw">fund_tickers</span>, <span class="kw">start</span>, <span class="kw">end</span>, verbose = <span class="fl">FALSE</span>)
-
-<span class="fu"><a href="reference/plot.html">plot</a></span>(object = <span class="kw">fund_market</span>, ticker = <span class="st">"GLD US Equity"</span>)
-</pre></div>
-</div>
-</div>
-<div id="factorem" class="section level2">
-<h2 class="hasAnchor">
-<a href="#factorem" class="anchor"></a>factorem</h2>
-<div id="performance-overview" class="section level3">
-<h3 class="hasAnchor">
-<a href="#performance-overview" class="anchor"></a>Performance overview</h3>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw">ranking_period</span> <span class="op">=</span> <span class="fl">1L</span>
-
-<span class="kw">factor</span> <span class="op">&lt;-</span> <span class="fu">OI_nearby_factor</span>(data = <span class="kw">futures_TS</span>, ranking_period = <span class="kw">ranking_period</span>)
-
-<span class="fu"><a href="reference/plot.html">plot</a></span>(<span class="kw">factor</span>, type = <span class="st">"performance"</span>)
-</pre></div>
-</div>
-<div id="positions-overview" class="section level3">
-<h3 class="hasAnchor">
-<a href="#positions-overview" class="anchor"></a>Positions overview</h3>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="reference/plot.html">plot</a></span>(<span class="kw">factor</span>, type = <span class="st">"positions"</span>)
-</pre></div>
-</div>
-</div>
-</div>
+Plot methods for the finRes suite.
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -155,13 +90,7 @@
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="lifecycle"></a></li>
-</ul>
-</div>
-</div>
+  </div>
 </div>
 
 

@@ -6,7 +6,7 @@
 #'
 #' @description Plots historical futures term structure data contained in an S4 object
 #'   of class \linkS4class{FuturesTS} from the
-#'   \href{https://bautheac.github.io/pullit/}{\pkg{pullit}} package.
+#'   \href{https://dev.bautheac.net/pullit/}{\pkg{pullit}} package.
 #'
 #'
 #' @param ticker a scalar character vector. Bloomberg identifier.
@@ -72,7 +72,7 @@ setMethod("plot", "FuturesTS", function(object, ticker, frame = NULL) {
 #'
 #' @description Plots historical market performance indicators for S4 objects
 #'   of class \linkS4class{FundMarket} from the
-#'   \href{https://bautheac.github.io/pullit/}{\pkg{pullit}} package.
+#'   \href{https://dev.bautheac.net/pullit/}{\pkg{pullit}} package.
 #'
 #' @examples \dontrun{
 #'
@@ -125,7 +125,7 @@ setMethod("plot", "FundMarket", function(object, ticker) {
 #' @description Plots historical market performance (type = "performance")
 #'   or positions summary (type = "positions") by leg for S4 objects of class
 #'   \linkS4class{AssetPricingFactor} from the
-#'   \href{https://bautheac.github.io/factorem/}{\pkg{factorem}} package..
+#'   \href{https://dev.bautheac.net/factorem/}{\pkg{factorem}} package..
 #'
 #'
 #' @param type a scalar character vector. Specifies the type of plot

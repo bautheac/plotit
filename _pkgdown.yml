@@ -5,9 +5,7 @@ url: https://dev.bautheac.net/plotit
 reference:
   - title: fancy graphics
     contents:
-      - plot_term_structure
-      - plot_performance
-      - plot_positions
+      - plot
 
 navbar:
   title: ~

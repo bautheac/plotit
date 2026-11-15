@@ -1,4 +1,4 @@
-#' Plot \href{https://bautheac.github.io/finRes/}{\pkg{finRes}} stuff.
+#' Plot \href{https://dev.bautheac.net/finRes/}{\pkg{finRes}} stuff.
 #'
 #'
 #' @param object an S4 object from the finRes suite.

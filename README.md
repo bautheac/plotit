@@ -5,18 +5,18 @@ plotit\!
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
-[plotit](https://bautheac.github.io/plotit/) belongs to the
-[finRes](https://bautheac.github.io/finRes/) suite where it provides
+[plotit](https://dev.bautheac.net/plotit/) belongs to the
+[finRes](https://dev.bautheac.net/finRes/) suite where it provides
 visualization solutions for packages including, at the time of writing,
-[pullit](https://bautheac.github.io/pullit/) and
-[factorem](https://bautheac.github.io/factorem/).  
+[pullit](https://dev.bautheac.net/pullit/) and
+[factorem](https://dev.bautheac.net/factorem/).  
 Install the development version from github with
 `devtools::install_github("bautheac/plotit")`.
 
 ## pullit
 
-[plotit](https://bautheac.github.io/plotit/) provides plot methods for a
-number of [pullit](https://bautheac.github.io/pullit/) objects
+[plotit](https://dev.bautheac.net/plotit/) provides plot methods for a
+number of [pullit](https://dev.bautheac.net/pullit/) objects
 including, at the time of writing, futures term structure (FuturesTS)
 and fund market (FundMarket) objects.
 
@@ -55,8 +55,8 @@ plot(object = data, ticker = ticker)
 
 ## factorem
 
-Similarly [plotit](https://bautheac.github.io/plotit/) provides plot
-methods for [factorem](https://bautheac.github.io/factorem/) factor
+Similarly [plotit](https://dev.bautheac.net/plotit/) provides plot
+methods for [factorem](https://dev.bautheac.net/factorem/) factor
 objects (AssetPricingFactor).
 
 ### Performance overview

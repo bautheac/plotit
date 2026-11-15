@@ -4,14 +4,14 @@
 \name{plotit-package}
 \alias{plotit}
 \alias{plotit-package}
-\title{plotit: nice plots for the \href{https://bautheac.github.io/finRes/}{\pkg{finRes}} suite}
+\title{plotit: nice plots for the \href{https://dev.bautheac.net/finRes/}{\pkg{finRes}} suite}
 \description{
 Plot methods for the finRes suite.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://bautheac.github.io/plotit}
+  \item \url{https://dev.bautheac.net/plotit}
   \item Report bugs at \url{https://github.com/bautheac/plotit/issues}
 }
 

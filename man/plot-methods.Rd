@@ -9,7 +9,7 @@
 \alias{plot,FundMarket}
 \alias{plot,AssetPricingFactor-method}
 \alias{plot,AssetPricingFactor}
-\title{Plot \href{https://bautheac.github.io/finRes/}{\pkg{finRes}} stuff.}
+\title{Plot \href{https://dev.bautheac.net/finRes/}{\pkg{finRes}} stuff.}
 \usage{
 plot(object, ...)
 
@@ -34,16 +34,16 @@ desired: "performance" or "positions".}
 \description{
 Plots historical futures term structure data contained in an S4 object
   of class \linkS4class{FuturesTS} from the
-  \href{https://bautheac.github.io/pullit/}{\pkg{pullit}} package.
+  \href{https://dev.bautheac.net/pullit/}{\pkg{pullit}} package.
 
 Plots historical market performance indicators for S4 objects
   of class \linkS4class{FundMarket} from the
-  \href{https://bautheac.github.io/pullit/}{\pkg{pullit}} package.
+  \href{https://dev.bautheac.net/pullit/}{\pkg{pullit}} package.
 
 Plots historical market performance (type = "performance")
   or positions summary (type = "positions") by leg for S4 objects of class
   \linkS4class{AssetPricingFactor} from the
-  \href{https://bautheac.github.io/factorem/}{\pkg{factorem}} package..
+  \href{https://dev.bautheac.net/factorem/}{\pkg{factorem}} package..
 }
 \examples{
 \dontrun{

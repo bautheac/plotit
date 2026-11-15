@@ -6,3 +6,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^development/
+^pkgdown-site$
+^\.github$

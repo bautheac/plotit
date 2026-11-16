@@ -23,10 +23,13 @@ Imports:
     tidyr (>= 0.8.1),
     tidyselect (>= 0.2.5),
     xts (>= 0.11.0)
+Suggests:
+    storethat
 Remotes: 
   bautheac/BBGsymbols,
   bautheac/factorem,
-  bautheac/pullit
+  bautheac/pullit,
+  bautheac/storethat
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

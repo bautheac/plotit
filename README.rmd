@@ -17,6 +17,8 @@ path <- here::here("development", "storethat.sqlite")
 [plotit](https://dev.bautheac.net/plotit/) belongs to the [finRes](https://dev.bautheac.net/finRes/) suite where it provides visualization solutions for packages including, at the time of writing, [pullit](https://dev.bautheac.net/pullit/) and [factorem](https://dev.bautheac.net/factorem/).  
 Install the development version from github with `devtools::install_github("bautheac/plotit")`. 
 
+**Synthetic data.** The plots on this site are drawn from a synthetic Bloomberg database that ships with [pullit](https://dev.bautheac.net/pullit/), never real market data, so the site builds without a Bloomberg terminal.
+
 
 ## pullit
 [plotit](https://dev.bautheac.net/plotit/) provides plot methods for a number of [pullit](https://dev.bautheac.net/pullit/) objects including, at the time of writing, futures term structure (FuturesTS) and fund market (FundMarket) objects.

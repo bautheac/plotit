@@ -50,7 +50,10 @@ jobs:
         # The articles read the synthetic database in inst/extdata, so they
         # render without Bloomberg.
         shell: Rscript {0}
+        # The article runs library(plotit), and setup-r-dependencies installs
+        # only the dependencies, not the package itself.
         run: |
+          install.packages(".", repos = NULL, type = "source")
           ov <- list(destination = "pkgdown-site")
           pkgdown::init_site(override = ov)
           pkgdown::build_home(override = ov)

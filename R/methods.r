@@ -106,12 +106,15 @@ setMethod("plot", "FundMarket", function(object, ticker) {
 
   p <- ggplot2::ggplot(data = dataset, ggplot2::aes(x = date, y = value, colour = field, group = 1L)) +
     ggplot2::geom_line(alpha = 0.6) + ggplot2::xlab(NULL) + ggplot2::ylab(NULL) +
-    ggplot2::facet_wrap(~field, scales = "free") +
+    ggplot2::facet_wrap(~field, scales = "free", ncol = 2L) +
+    ggplot2::scale_x_date(breaks = scales::breaks_pretty(n = 3L), date_labels = "%b %Y") +
+    ggplot2::scale_y_continuous(labels = scales::label_number(scale_cut = scales::cut_short_scale())) +
     ggthemes::theme_tufte(base_size = 12L) +
     ggplot2::ggtitle(ticker) +
-    ggplot2::theme(legend.position = "none", plot.title = ggplot2::element_text(hjust = 0.5))
+    ggplot2::theme(legend.position = "none", plot.title = ggplot2::element_text(hjust = 0.5),
+                   panel.spacing = ggplot2::unit(2L, "lines"))
 
-  plotly::ggplotly(p)
+  plotly::ggplotly(p, height = 700L)
 
 })
 

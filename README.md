@@ -13,9 +13,7 @@ visualization solutions for packages including, at the time of writing,
 Install the development version from github with
 `devtools::install_github("bautheac/plotit")`.
 
-**Synthetic data.** The plots on this site are drawn from a synthetic
-Bloomberg database that ships with [pullit](https://dev.bautheac.net/pullit/),
-never real market data, so the site builds without a Bloomberg terminal.
+**Synthetic data.** The plots on this site are drawn from a synthetic Bloomberg database that ships with [pullit](https://dev.bautheac.net/pullit/), never real market data. See the [plotit](https://dev.bautheac.net/plotit/articles/plotit.html) article.
 
 ## pullit
 

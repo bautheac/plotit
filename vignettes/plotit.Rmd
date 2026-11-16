@@ -1,0 +1,84 @@
+---
+title: plotit!
+date: ""
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{plotit!}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE)
+library(plotit); library(pullit); library(factorem)
+# The synthetic database that ships with pullit stands in for Bloomberg.
+path <- system.file("extdata", "storethat.sqlite", package = "pullit")
+start <- "2024-11-01"; end <- "2026-11-13"
+```
+
+[plotit](https://dev.bautheac.net/plotit/) provides plot methods for objects
+from [pullit](https://dev.bautheac.net/pullit/) and
+[factorem](https://dev.bautheac.net/factorem/). The plots below are drawn from a
+synthetic Bloomberg database, never real market data.
+
+## pullit
+
+### Futures term structure
+
+Plot the dynamics of a futures series term structure over time. Press play, or
+drag the slider, to step through the dates:
+
+```{r futures}
+ticker <- "C A Comdty"
+
+term_structure <- pull_futures_market(
+  source = "storethat", type = "term structure", active_contract_tickers = ticker,
+  start, end, TS_positions = 1L:10L, roll_type = "A", roll_days = 0L,
+  roll_months = 0L, roll_adjustment = "N", verbose = FALSE, file = path
+  )
+
+plot(term_structure, ticker = ticker)
+```
+
+### Fund market
+
+Plot historical fund performance:
+
+```{r fund}
+ticker <- "SPY US Equity"
+
+fund <- pull_fund_market(source = "storethat", ticker, start, end, verbose = FALSE, file = path)
+
+plot(fund, ticker = ticker)
+```
+
+## factorem
+
+Build a momentum factor on commodity futures:
+
+```{r factor}
+tickers <- c(
+  "C A Comdty", "S A Comdty", "SMA Comdty", "O A Comdty",
+  "W A Comdty", "SBA Comdty", "SIA Comdty", "NGA Comdty"
+  )
+
+data <- pull_futures_market(
+  source = "storethat", type = "term structure", active_contract_tickers = tickers,
+  start, end, TS_positions = 1L, roll_type = "A", roll_days = 0L,
+  roll_months = 0L, roll_adjustment = "N", verbose = FALSE, file = path
+  )
+
+factor <- momentum_factor(data)
+```
+
+### Performance overview
+
+```{r performance}
+plot(factor, type = "performance")
+```
+
+### Positions overview
+
+```{r positions}
+plot(factor, type = "positions")
+```

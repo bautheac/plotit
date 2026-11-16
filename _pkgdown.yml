@@ -2,6 +2,11 @@ title: plotit
 
 url: https://dev.bautheac.net/plotit
 
+articles:
+  - title: get started
+    contents:
+      - plotit
+
 reference:
   - title: fancy graphics
     contents:
@@ -15,3 +20,5 @@ navbar:
       href: index.html
     - text: functions
       href: reference/index.html
+    - text: articles
+      href: articles/index.html

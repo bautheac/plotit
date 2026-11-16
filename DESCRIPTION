@@ -18,7 +18,7 @@ Imports:
     pullit,
     purrr (>= 0.2.5),
     rlang (>= 0.2.2),
-    scales (>= 1.0.0),
+    scales (>= 1.2.0),
     tibble (>= 1.4.2),
     tidyr (>= 0.8.1),
     tidyselect (>= 0.2.5),

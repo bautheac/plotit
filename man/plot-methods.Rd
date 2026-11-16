@@ -46,57 +46,53 @@ Plots historical market performance (type = "performance")
   \href{https://dev.bautheac.net/factorem/}{\pkg{factorem}} package..
 }
 \examples{
-\dontrun{
+library(pullit)
 
-  library(finRes)
+# The synthetic database that ships with pullit stands in for Bloomberg.
+path <- system.file("extdata", "storethat.sqlite", package = "pullit")
 
-  # pull data from Bloomberg with pullit
-  term_structure <- pull_futures_market(Bloomberg = T, type = 'term structure',
-    active_contract_tickers = "C A Comdty", start = as.character(Sys.Date() - 365L),
-    end = as.character(Sys.Date()), TS_positions = 1L:10L, roll_type = "A",
-    roll_days = 0L, roll_months = 0L, roll_adjustment = "N")
+# pull data with pullit (source = "Bloomberg" with a terminal)
+term_structure <- pull_futures_market(source = "storethat", type = "term structure",
+  active_contract_tickers = "C A Comdty", start = "2025-11-14", end = "2026-11-13",
+  TS_positions = 1L:10L, roll_type = "A", roll_days = 0L, roll_months = 0L,
+  roll_adjustment = "N", verbose = FALSE, file = path)
 
-  # plot futures term structure
-  plot(term_structure, ticker = "C A Comdty")
+# plot futures term structure
+plot(term_structure, ticker = "C A Comdty")
 
-}
+library(pullit)
 
-\dontrun{
+# The synthetic database that ships with pullit stands in for Bloomberg.
+path <- system.file("extdata", "storethat.sqlite", package = "pullit")
 
-  library(finRes)
+# pull data with pullit (source = "Bloomberg" with a terminal)
+fund <- pull_fund_market(source = "storethat", tickers = "SPY US Equity",
+  start = "2025-11-14", end = "2026-11-13", verbose = FALSE, file = path)
 
-  # pull data from Bloomberg with pullit
-  fund <- pull_fund_market(Bloomberg = T, tickers = "SPY US Equity",
-    start = as.character(Sys.Date() - 365L), end = as.character(Sys.Date()))
+# plot fund performance
+plot(fund, ticker = "SPY US Equity")
 
-  # plot fund performance
-  plot(fund, ticker = "SPY US Equity")
+library(pullit)
+library(factorem)
 
-}
+# The synthetic database that ships with pullit stands in for Bloomberg.
+path <- system.file("extdata", "storethat.sqlite", package = "pullit")
 
+# pull data with pullit (source = "Bloomberg" with a terminal)
+tickers <- c("C A Comdty", "S A Comdty", "SMA Comdty", "O A Comdty",
+  "W A Comdty", "SBA Comdty", "SIA Comdty", "NGA Comdty")
+term_structure <- pull_futures_market(source = "storethat", type = "term structure",
+  active_contract_tickers = tickers, start = "2024-11-01", end = "2026-11-13",
+  TS_positions = 1L, roll_type = "A", roll_days = 0L, roll_months = 0L,
+  roll_adjustment = "N", verbose = FALSE, file = path)
 
-\dontrun{
+# construct an asset pricing factor with factorem
+factor <- momentum_factor(term_structure)
 
-  library(finRes)
+# plot factor performance
+plot(factor, type = "performance")
 
-  # pull data from Bloomberg via pullit
-  tickers <- c("C A Comdty", "S A Comdty", "SMA Comdty", "BOA Comdty",
-      "W A Comdty", "KWA Comdty", "MWA Comdty", "O A Comdty")#'
-  term_structure <- pull_futures_market(Bloomberg = T, type = 'term structure',
-    active_contract_tickers = tickers, start = as.character(Sys.Date() - (2L * 365L)),
-    end = as.character(Sys.Date()), TS_positions = 1L, roll_type = "A", roll_days = 0L,
-    roll_months = 0L, roll_adjustment = "N")
-
-  # construct an asset pricing factor with factorem
-  factor <- momentum_factor(term_structure)
-
-  # plot factor performance
-  plot(factor, type = "performance")
-
-  # plot factor performance
-  plot(factor, type = "positions")
-
-}
-
+# plot factor positions
+plot(factor, type = "positions")
 
 }
